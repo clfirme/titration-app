@@ -1,0 +1,19 @@
+Environment variables
+Define environment variables for more control and flexibility over your build.
+
+Para este aplicativo específico de titulação, não é necessário configurar variáveis de ambiente porque:
+
+Não estamos usando nenhuma API externa
+Não temos banco de dados
+Não temos chaves secretas ou tokens
+Toda a lógica é executada no lado do cliente
+Os cálculos são feitos localmente
+As variáveis de ambiente são necessárias quando você precisa armazenar 
+informações sensíveis ou configurações que variam entre ambientes (desenvolvimento/produção), como:
+
+Chaves de API
+Credenciais de banco de dados
+URLs de serviços externos
+Tokens de autenticação
+Como seu aplicativo é totalmente client-side e não tem dependências externas,
+você pode pular essa etapa de configuração de variáveis de ambiente no Netlify.

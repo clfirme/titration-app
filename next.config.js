@@ -3,11 +3,16 @@ const nextConfig = {
   // Enable React strict mode for better development experience
   reactStrictMode: true,
   
-  // Disable server components for simplicity in this application
-  // since we're heavily using client-side state and calculations
-  experimental: {
-    appDir: true,
-  },
+  // Output as a static website for better compatibility with Capacitor
+  output: 'export',
+  
+  // Configure asset prefix for mobile app
+  assetPrefix: '.',
+  
+  // Disable image optimization since we're building for mobile
+  images: {
+    unoptimized: true
+  }
 };
 
 module.exports = nextConfig;

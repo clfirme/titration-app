@@ -1,0 +1,154 @@
+# DOCUMENTAÇÃO DO PROJETO TITRATION CALCULATOR
+Data: 13/04/2025
+
+## VISÃO GERAL DO PROJETO
+O Titration Calculator é uma aplicação web/mobile que permite aos usuários visualizar e entender curvas de titulação ácido-base. A aplicação foi desenvolvida usando Next.js e convertida para aplicativo móvel usando Capacitor.
+
+## FUNCIONALIDADES PRINCIPAIS
+- Visualização de curvas de titulação para diferentes cenários
+- Cálculos de neutralização para titulações de base forte com ácido forte
+- Interface responsiva para web e dispositivos móveis
+- Explicações detalhadas sobre o processo de titulação
+
+## HISTÓRICO DE DESENVOLVIMENTO
+
+### 1. CONFIGURAÇÃO INICIAL DO PROJETO
+- Criação do projeto Next.js
+- Configuração do Tailwind CSS
+- Implementação da estrutura básica da aplicação
+
+### 2. CORREÇÕES E MELHORIAS
+- **Correção de Problemas de Hidratação**:
+  - Removida a data dinâmica do layout
+  - Substituída por um ano constante
+  - Criado componente Footer para exibir informações de copyright
+
+- **Correções de Estilo**:
+  - Atualizado tailwind.config.js para incluir os caminhos corretos
+  - Ajustados imports para usar caminhos absolutos via @/
+
+- **Melhorias nos Cálculos**:
+  - Adicionados cálculos de neutralização no componente ScenarioSelector
+  - Implementada exibição da quantidade de HCl necessária para neutralizar NaOH
+
+### 3. PREPARAÇÃO PARA DEPLOY WEB
+- Criado arquivo netlify.toml para deploy na Netlify
+- Atualizado next.config.js para compatibilidade com deploy estático
+
+### 4. INTEGRAÇÃO COM CAPACITOR (MOBILE)
+- Instalado Capacitor para conversão da aplicação web em app móvel
+- Criado capacitor.config.json com as configurações necessárias
+- Modificado next.config.js:
+  - Removida opção experimental.appDir
+  - Adicionado output: 'export' para compatibilidade
+  - Configurado assetPrefix: '.' para recursos estáticos
+  - Desabilitada otimização de imagens para build mobile
+
+### 5. CONFIGURAÇÃO PARA ANDROID
+- Adicionada plataforma Android via Capacitor
+- Corrigido problema do webDir no capacitor.config.json
+- Copiados arquivos de build para a pasta public
+- Resolvidos problemas de classes duplicadas no build Android:
+  - Ajustado build.gradle para forçar versão consistente do Kotlin
+  - Configuradas exclusões de pacotes conflitantes
+  - Adicionadas regras de empacotamento para evitar conflitos META-INF
+
+### 6. GERAÇÃO DE APK/BUNDLE PARA PUBLICAÇÃO
+- Criado keystore para assinatura do aplicativo
+- Gerado APK/Bundle assinado para publicação na Play Store
+
+## COMANDOS IMPORTANTES UTILIZADOS
+
+### Comandos Next.js
+```bash
+npm run build       # Gerar build de produção
+```
+
+### Comandos Capacitor
+```bash
+npx cap init "Titration Calculator" com.titrationcalc.app  # Inicializar Capacitor
+npx cap add android  # Adicionar plataforma Android
+npx cap copy android  # Copiar arquivos web para Android
+npx cap open android  # Abrir projeto no Android Studio
+```
+
+### Comandos Android
+```bash
+# Limpar pasta public antes de copiar arquivos
+rm -r -force public
+mkdir public
+
+# Copiar arquivos de build para pasta public
+xcopy /E /I out public
+```
+
+## ESTRUTURA DE ARQUIVOS PRINCIPAIS
+- **next.config.js**: Configuração do Next.js com opções para build estático
+- **capacitor.config.json**: Configuração do Capacitor para build mobile
+- **src/components/ScenarioSelector.jsx**: Componente para seleção de cenários de titulação
+- **src/lib/titrationCalculations.js**: Cálculos para diferentes cenários de titulação
+- **src/app/layout.jsx**: Layout principal da aplicação
+- **src/app/page.jsx**: Página principal da aplicação
+- **android/**: Projeto Android gerado pelo Capacitor
+
+## CONFIGURAÇÕES IMPORTANTES
+
+### next.config.js
+```javascript
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  // Enable React strict mode for better development experience
+  reactStrictMode: true,
+  
+  // Output as a static website for better compatibility with Capacitor
+  output: 'export',
+  
+  // Configure asset prefix for mobile app
+  assetPrefix: '.',
+  
+  // Disable image optimization since we're building for mobile
+  images: {
+    unoptimized: true
+  }
+};
+
+module.exports = nextConfig;
+```
+
+### capacitor.config.json
+```json
+{
+  "appId": "com.titrationcalc.app",
+  "appName": "Titration Calculator",
+  "webDir": "public",
+  "server": {
+    "androidScheme": "https"
+  }
+}
+```
+
+## INFORMAÇÕES PARA PUBLICAÇÃO
+- **Keystore Path**: D:\Aplicativos\titration-app\android\app\titration-keystore.jks
+- **Key Alias**: titration_key
+- **Validade**: 10000 dias
+
+## PRÓXIMOS PASSOS RECOMENDADOS
+1. **Publicação na Google Play Store**:
+   - Criar conta de desenvolvedor ($25 USD)
+   - Preencher informações do app (descrição, screenshots, etc.)
+   - Fazer upload do Bundle/APK assinado
+
+2. **Melhorias Futuras**:
+   - Adicionar mais tipos de titulação (ácido fraco/base forte, etc.)
+   - Implementar recursos de salvamento de resultados
+   - Melhorar a interface para dispositivos móveis
+   - Adicionar suporte a múltiplos idiomas
+
+3. **Versão iOS** (se desejado):
+   - Adicionar plataforma iOS (requer Mac com Xcode)
+   - Configurar para publicação na App Store
+
+## OBSERVAÇÕES IMPORTANTES
+- Mantenha o arquivo keystore e suas senhas em local seguro
+- Para atualizações futuras, use sempre o mesmo keystore
+- Faça backup regular do projeto e suas configurações

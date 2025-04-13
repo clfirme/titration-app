@@ -1,0 +1,8 @@
+{
+  "appId": "com.titrationcalc.app",
+  "appName": "Titration Calculator",
+  "webDir": "public",
+  "server": {
+    "androidScheme": "https"
+  }
+}
