@@ -1,0 +1,20 @@
+Atualização no Git
+Primeiro, stage all changes
+Depois, 
+git commit -m "Fix hydration issue and add neutralization calculations"
+git push origin master
+
+Criar versão 1.0
+git tag -a v1.0.0 -m "First stable version"
+git push origin v1.0.0
+
+Ir para a versão 2.0
+git checkout -b version2
+
+Depois de executar esse comando, você estará no novo branch 'version2' e poderá:
+
+Fazer todas as alterações que quiser
+Commitar normalmente
+E quando quiser enviar para o GitHub, usar:
+
+git push origin version2
