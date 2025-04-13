@@ -148,3 +148,22 @@ src/lib/ para funções utilitárias e cálculos
 Esta estrutura vai funcionar muito bem para seu aplicativo de titulação, mantendo tudo organizado e 
 seguindo as convenções modernas do Next.js. Todos os arquivos estão no lugar correto para que o Next.js 
 possa encontrá-los e fazer o build adequadamente.
+
+CLONAR PROJETO NO GITHUB
+
+No GitHub:
+Vá para https://github.com/<nome-do-usuario>
+Clique no botão "New" (ou "Novo repositório")
+Digite "titration-app" como nome do repositório
+Não inicialize com README, .gitignore ou licença
+Clique em "Create repository"
+
+No terminal:
+   git init
+   git add .
+   git commit -m "Configuração inicial do aplicativo de titulação"
+   git remote add origin https://github.com/clfirme/titration-app.git
+   git push -u origin main // deu erro porque não há diretório main.
+   git branch // diretorio master
+   git push -u origin master
+

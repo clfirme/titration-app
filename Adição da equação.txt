@@ -1,0 +1,10 @@
+Case: Titration of 50 mL of 6M NaOH with 3M HCl
+Calculation of mols of NaOH:
+n (NaOH) = M x V = 6 mol/L x 0.050 L = 0.3 mol
+
+Calculation of the HCl volume to neutralize 0.3 mol of NaOH:
+
+n(HCl) = M x V, V = n/M = 0.3/3 - 0.1 L = 100 mL
+
+Vou adicionar os cálculos de neutralização para cada cenário no componente ScenarioSelector. 
+Vou modificar o componente para incluir esses cálculos:

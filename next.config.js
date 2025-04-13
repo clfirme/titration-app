@@ -1,26 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Enable React strict mode for better development experience
   reactStrictMode: true,
-  swcMinify: true,
   
-  // Garante que as imagens funcionem corretamente
-  images: {
-    domains: [],
-    unoptimized: false,
-  },
-  
-  // Se você quiser fazer uma exportação estática (necessário para Capacitor)
-  // output: 'export',  // Descomente esta linha quando for exportar para Capacitor
-  
-  // Se você estiver usando i18n
-  i18n: {
-    locales: ['pt-BR', 'en-US'],
-    defaultLocale: 'pt-BR',
-  },
-  
-  // Otimizações de webpack
-  webpack: (config) => {
-    return config;
+  // Disable server components for simplicity in this application
+  // since we're heavily using client-side state and calculations
+  experimental: {
+    appDir: true,
   },
 };
 

@@ -1,0 +1,33 @@
+Overview of Your Next.js Titration App
+This application allows users to select between three different titration scenarios and view the corresponding titration curves. The scenarios are:
+
+Titration of 50 mL of 6M NaOH with 6M HCl (equal concentrations)
+Titration of 50 mL of 3M NaOH with 6M HCl (acid concentration twice the base)
+Titration of 50 mL of 6M NaOH with 3M HCl (base concentration twice the acid)
+
+Key Components and How They Work Together
+1. The Calculation Engine (lib/titrationCalculations.js)
+This is the core of the application where all the chemistry calculations happen. It includes functions to:
+
+Calculate pH values at different points during the titration
+Determine the equivalence point based on the concentrations
+Generate data for all three titration scenarios
+
+The calculation takes into account the stoichiometry of the acid-base reaction, tracking the moles of acid and base, and calculating pH based on excess H⁺ or OH⁻ ions.
+2. The Scenario Selector (components/ScenarioSelector.js)
+This component presents the three different titration scenarios as selectable cards. When a user clicks on a scenario, it tells the parent component which scenario was selected, triggering a state update.
+3. The Titration Chart (components/TitrationChart.js)
+This component takes the selected scenario ID and:
+
+Fetches the titration data for that scenario
+Displays an interactive line chart showing pH vs. volume of acid added
+Shows reference lines for the equivalence point and neutral pH
+Provides detailed information about the titration
+
+The chart uses the Recharts library to create a responsive, interactive visualization that works well on both mobile and desktop browsers.
+4. The Main Page (app/page.js)
+This is the central component that brings everything together. It:
+
+Maintains the state for the currently selected scenario
+Renders the ScenarioSelector and TitrationChart components
+Provides educational information about acid-base titrations
